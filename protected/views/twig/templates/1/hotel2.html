@@ -1,0 +1,949 @@
+{% include 'includesAdmin/header.html' %}
+<div id="page-wrapper">
+    {% include 'includesAdmin/header2.html' %}   
+    <div id="page-content-wrapper">
+        <div id="page-content">
+            <div class="container">                   
+                <div class="row">
+                    <div class="col-md-12">                           
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h3 class="title-hero">
+                                    LLENADO DE DATOS
+                                </h3>
+                                <div class="example-box-wrapper">
+                                    <div id="form-wizard-3" class="form-wizard">
+                                        <ul>
+                                            <li>
+                                                <a href="#step-1" data-toggle="tab">
+                                                    <label class="wizard-step">1</label>
+                                                <span class="wizard-description">
+                                                        HOTEL
+                                                    <small>llenado de datos del hotel</small>
+                                                </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-2" data-toggle="tab">
+                                                    <label class="wizard-step">2</label>
+                                                <span class="wizard-description">
+                                                    CONTRATOS
+                                                    <small>Llnado de contratos</small>
+                                                </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-3" data-toggle="tab">
+                                                    <label class="wizard-step">3</label>
+                                                <span class="wizard-description">
+                                                    EMPLEADOS
+                                                    <small>Llenado de datos de los emleados</small>
+                                                </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-4" data-toggle="tab">
+                                                    <label class="wizard-step">4</label>
+                                                <span class="wizard-description">
+                                                        HABITACIONES
+                                                    <small>Llenado de datos de las habitaciones</small>
+                                                </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#step-5" data-toggle="tab">
+                                                    <label class="wizard-step">5</label>
+                                                <span class="wizard-description">
+                                                    OTA Y CANALES
+                                                    <small>Llenado de ota y canales</small>
+                                                </span>
+                                                </a>
+                                            </li>
+                                           
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="step-1">
+                                                <div class="">                                                                                                                                                             
+                                                        <form id="frm_reset">
+                                                            <input type="hidden"  name="idAux" id="idAux">
+                                                            <input type="hidden" name="path" id="path" value="{{pathSite}}">
+                                                                <!-- datos generales -->
+                                                            <div class="panel ">
+                                                                <div class="panel-body">
+                                                                    <div class="panel-heading bg-blue-alt">
+                                                                        <h3 class="panel-title"><strong>Datos generales del hotel </strong></h3>
+                                                                    </div>
+                                                                    
+                                                                        <!--  hotel -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Hotel </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" class="form-control" id="txthotel" name="txthotel">
+                            
+                                                                        </div>
+                                                                    </div>     
+                                                                        <!-- CUIH -->                                  
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">CUIH </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" class="form-control" id="txtcuih" name="txtcuih">
+                                                                        </div>
+                                                                    </div>
+                                                                        <!-- N habitaciones-->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">No. habitaciones </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" id="txtnum_habitaciones" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                             <!-- Amenidades del hotel -->
+                                                             <div class="panel ">
+                                                                <div class="panel-body">
+                                                                    <div class="panel-heading bg-blue-alt">
+                                                                        <h3 class="panel-title"><strong>Amenidades del hotel </strong></h3>
+                                                                        <div class="text-right mt">
+                                    
+                                                                            <button class="btn btn-labeled btn-default" type="button">
+                                                                                <span class="btn-label">
+                                                                                    <i class="glyph-icon icon-plus"></i>
+                                                                                </span> Agregar más amenidades
+                                                                            </button>
+                                                
+                                                                        </div>
+                                                                    </div>                                                                    
+                                                                        <!--  hotel -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Amenidad </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" class="form-control" id="txtAmenidad" name="txthotel">
+                            
+                                                                        </div>
+                                                                    </div>                                                                            
+                                                                </div>
+                                                            </div>
+                                                                <!-- direccion hotel -->
+                                                            <div class="panel">
+                                                                <div class="panel-body">
+                                                                    <div class="panel-heading bg-blue-alt">
+                                                                        <h3 class="panel-title"><strong>Dirección del hotel </strong></h3>
+                                                                    </div>
+                                                                        <!-- pais --> 
+                                                                        <div class="col-md-6 mrg20T">
+                                                                        <label for="">País </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <select class="form-control" id="txtpais_id">
+                                                                            <option value="0">Seleccionar un pais</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>   
+                                                                        <!-- estado --> 
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Estado </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <select class="form-control" id="txtestado_id">
+                                                                            <option value="0">Seleccionar un pais</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>  
+                                                                        <!-- municipio -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Municipio </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <select class="form-control" id="txtmunicipio_id">
+                                                                            <option value="0">Seleccionar un municipio</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>  
+                                                                        <!-- colonia -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                    <label for="">Colonia </label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                        <select class="form-control "  id="txtcolonia_id">
+                                                                        <option value="0">Seleccione una colonia</option>
+                                                                            
+                                                                        </select>
+                                                                    </div>
+                                                                    </div>  
+                                                                        <!-- codigo postal -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Código postal </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtcodigo_postal" class="form-control">
+                                                                        </div>
+                                                                    </div>  
+                                                                        <!-- calle -->                                               
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Calle </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtcalle" class="form-control">
+                                                                        </div>
+                                                                    </div>                                                                     
+                                                                                                                                            
+                                                                        <!-- numero interior -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Número interior </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtnumero_interior" class="form-control">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                                <!-- datos adicionales -->
+                                                            <div class="panel">
+                                                                <div class="panel-body">
+                                                                    <div class="panel-heading ">
+                                                                        <h3 class="panel-title"><strong>Datos adicionales </strong></h3>
+                                                                    </div>
+                                                                    <!-- correo -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Correo </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtcorreo" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Liga google -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Liga de Google </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtliga_gogole" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- telefono 1 -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Teléfono 1 </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txttelefono" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- telefono 2 -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Teléfono 2 </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txttelefono_2" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- celular-->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Celular </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtcelular" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- pagina web -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Página web </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                            <input type="text" id="txtpagina_web" class="form-control">
+                                                                        </div>
+                                                                    </div>                                                                       
+                                                                </div>
+                                                            </div>                                                               
+                                                            <div class="col-md-12" style="margin-left: 750px;">
+                                                                <button type="button" class="btn btn-default" id="regresar">Cancelar</button>
+                                                                <button type="button" id="btnsave" name="btnsave" class="btn btn-success">Guardar</button>
+                                                            </div>                                                           
+                                                        </form>                                                 
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="step-2">
+                                                <div class="content-box">
+                                                    <h3 class="content-box-header bg-default">
+                                                        Contrato
+                                                    </h3>
+                                                    <div class="content-box-wrapper">
+                                                        <form id="frm_reset">
+                                                            <input type="hidden"  name="idAux" id="idAux">
+                                                            <input type="hidden" name="path" id="path" value="{{pathSite}}">
+                                                                <!-- contrato -->
+                                                            <div class="panel ">
+                                                                <div class="panel-body">
+                                                                    <div class="panel-heading bg-blue-alt">
+                                                                        <h3 class="panel-title"><strong>Contrato </strong></h3>
+                                                                    </div>
+                                                                    
+                                                                        <!--  bd -->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">BD </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" class="form-control" id="txtombre" name="txthotel">
+                            
+                                                                        </div>
+                                                                    </div>     
+                                                                        <!-- Termino de contrato -->                                  
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Termino de contrato </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" class="form-control" id="txttermino_contrato" name="txtcuih">
+                                                                        </div>
+                                                                    </div>
+                                                                        <!-- Tiempo de penalización-->
+                                                                    <div class="col-md-6 mrg20T">
+                                                                        <label for="">Tiempo de penalización </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
+                                                                            <input type="text" id="txtpenalizacion" class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="step-3">
+                                                <div class="content-box">
+                                                    <h3 class="content-box-header bg-default">
+                                                        Empleados
+                                                    </h3>
+                                                    <div>
+                                                        <form action="{{pathSite}}" id="frm2" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="path" id="path" value="{{pathSite}}">
+                                                            <input type="hidden" name="idReg" id="idReg" value="{{idReg}}">
+                                                            <input type="hidden" name="Action" id="Action" value="">
+                                                            <div class="panel-heading">
+                                                                    
+                                                            <div class="text-right mt">
+                                    
+                                                                <button class="btn btn-labeled btn-default" data-toggle="modal" data-target="#AgregarUsuario" type="button">
+                                                                    <span class="btn-label">
+                                                                        <i class="glyph-icon icon-plus"></i>
+                                                                    </span> Agregar
+                                                                </button>
+                                    
+                                                            </div>
+                                                            
+                                                        </div>
+                                                            <div class="panel-body">
+                                                            <h3 class="title-hero">
+                                    
+                                                            </h3>
+                                                            <div class="example-box-wrapper" style="overflow: auto;">
+                                                                <table id="datatable-example" class="table table-striped table-bordered table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Nombre</th>
+                                                                        <th>Correo</th>                                
+                                                                        <th>Teléfono fijo</th>
+                                                                        <th>Celular</th>
+                                                                        <th>Acceso a HMS de KAO</th>                                 
+                                                                        <th>Manejo de OTA</th>
+                                                                        <th>Puesto</th>
+                                                                        <th class="">Acción</th>
+                                                                        </tr>
+                                                                    </thead>
+                                    
+                                                                </table>                         
+                                                            </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal fade" id="AgregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title" id="title_modal">Agregar empleado</h4>
+                                                                </div>
+                                                                <div class="modal-body row">
+                                                                    <form id="frm_reset">
+                                                                        <input type="hidden"  name="idAux" id="idAux">
+                                                                        <input type="hidden" name="path" id="path" value="{{pathSite}}"> 
+                                                                        <div class="col-md-12 mrg20T">
+                                                                            <label for="">Hotel </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <select name="hotel"  id="txthotel_id" class="chosen-select">  
+                                                                                    
+                                                                                    {% for key,value in hoteles %}    
+                                                                                        <option value="{{value.id}}">{{value.hotel}}</option>
+                                                                                    {% endfor %}                                                          
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- nombre -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Nombre </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" class="form-control" id="txtnombre" name="txtnombre">
+                                                                            </div>
+                                                                        </div>
+                                                                            <!-- Ap paterno -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Apellido paterno </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-user"></i></span>                          
+                                                                                <input type="text" id="txtapellido_paterno" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                            <!-- Ap materno -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Apellido materno </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-user"></i></span>                          
+                                                                                <input type="text" id="txtapellido_materno" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                            <!--  correo -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Correo </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-email"></i></span>                          
+                                                                                <input type="email" id="txtcorreo" class="form-control">
+                                                                            </div>
+                                                                        </div> 
+                                                                        <!--  tel fijo -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Teléfono fijo </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" id="txtcorreo" class="form-control">
+                                                                            </div>
+                                                                        </div> 
+                                                                        <!--  celular -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Celular </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" id="txtcelular" class="form-control">
+                                                                            </div>
+                                                                        </div>   
+                                                                        <!--  acceso hms -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading">
+                                                                                    <h3 class="panel-title"><strong>Tiene acceso a HMS de KAO</strong></h3>
+                                                                                </div>
+                                                                                <div class="panel-body">
+                                                
+                                                                                    <div class="radio">
+                                                                                        <label>
+                                                                                            <input type="radio" name="txtacceso_aihms"  id="txtacceso_aihms1" value="si">
+                                                                                            Si
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="radio">
+                                                                                        <label>
+                                                                                            <input type="radio" name="txtacceso_aihms" id="txtacceso_aihms2" value="no">
+                                                                                            No
+                                                                                        </label>
+                                                                                    </div>                                                           
+                                                                                </div>
+                                                                            </div>                      
+                                                                        </div>    
+                                                                            <!--  manejo de ota -->
+                                                                            <div class="col-md-6 mrg20T">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading">
+                                                                                    <h3 class="panel-title"><strong>Maneja OTA</strong></h3>
+                                                                                </div>
+                                                                                <div class="panel-body">
+                                                
+                                                                                    <div class="radio">
+                                                                                        <label>
+                                                                                            <input type="radio" name="txtmaneja_ota"  id="txtmaneja_ota1" value="si">
+                                                                                            Si
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="radio">
+                                                                                        <label>
+                                                                                            <input type="radio" name="txtmaneja_ota" id="txtmaneja_ota2" value="no">
+                                                                                            No
+                                                                                        </label>
+                                                                                    </div>                                                           
+                                                                                </div>
+                                                                            </div>                      
+                                                                        </div>  
+                                                                        <!--  puesto -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Puesto </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <select class="form-control" id="txtactividades">
+                                                                                <option value="0">Seleccionar un puesto</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                                                                                        
+                                                                    </form>
+                                                                </div>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                    <button type="button" id="btnsave" name="btnsave" class="btn btn-success"></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="step-4">
+                                                <div class="content-box">
+                                                    <h3 class="content-box-header bg-default">
+                                                        HABITACIÓN
+                                                    </h3>
+                                                    <div class="">
+                                                        <form action="{{pathSite}}" id="frm2" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="path" id="path" value="{{pathSite}}">
+                                                            <input type="hidden" name="idReg" id="idReg" value="{{idReg}}">
+                                                            <input type="hidden" name="Action" id="Action" value="">
+                                                            <div class="panel-heading">
+                                                                        
+                                                                <div class="text-right mt">
+                                        
+                                                                    <button class="btn btn-labeled btn-default" onclick="btnAddModalAjax('frm_reset','Guardar','Agregar nueva habitacion')" type="button" >
+                                                                        <span class="btn-label">
+                                                                            <i class="glyph-icon icon-plus"></i>
+                                                                        </span> Agregar
+                                                                    </button>
+                                        
+                                                                </div>
+                                                                
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <h3 class="title-hero">
+                                        
+                                                                </h3>
+                                                                <div class="list-group">
+                                                                <div class="example-box-wrapper tablaDesign" > 
+                                                                                                                                
+                                                                    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="datatable_ajax">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Id</th>
+                                                                            <th>Habitación</th>
+                                                                            <th>Hotel</th>
+                                                                            <th>Tipo de habitación</th>
+                                                                            <th>Vista</th>
+                                                                            <th>Detalle</th>
+                                                                            <th>Vendible</th>
+                                                                            <th>Acciones</th>
+                                                                            
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                    
+                                                                        </tbody>
+                                                                    </table>                                
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </form>
+                                                        <div class="modal fade" id="modalAjax" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                        <h4 class="modal-title" id="title_modal">Agregar habitación</h4>
+                                                                    </div>
+                                                                    <div class="modal-body row">
+                                                                        <form id="frm_reset">
+                                                                            <input type="hidden"  name="idAux" id="idAux">
+                                                                            <input type="hidden" name="path" id="path" value="{{pathSite}}"> 
+                                                                            <div class="col-md-12 mrg20T">
+                                                                                <label for="">Hotel </label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                    <select name="hotel"  id="txthotel_id" class="chosen-select">  
+                                                                                        
+                                                                                        {% for key,value in hoteles %}    
+                                                                                            <option value="{{value.id}}">{{value.hotel}}</option>
+                                                                                        {% endfor %}                                                          
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12 mrg20T">
+                                                                                <label for="">Tipo de habitación </label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                    <select class="form-control" id="txttipo_habitacion_id">
+                                                                                    <option value="0">Seleccionar un hotel</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 mrg20T">
+                                                                                <label for="">Número de habitación </label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                    <input type="text" class="form-control" id="txthabitacion" name="txtNoHabitacion">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6 mrg20T">
+                                                                                <label for="">Detalle </label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                    <input type="text" id="txtdetalle" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                                            
+                                                                            <div class="col-md-6 mrg20T">
+                                                                                <div class="panel">
+                                                                                    <div class="panel-heading">
+                                                                                        <h3 class="panel-title"><strong>Vista</strong></h3>
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+                                                    
+                                                                                        <div class="radio">
+                                                                                            <label>
+                                                                                                <input type="radio" name="txtvista"  id="txtvista1" value="Con vista">
+                                                                                                Con vista
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="radio">
+                                                                                            <label>
+                                                                                                <input type="radio" name="txtvista" id="txtvista2" value="Sin vista">
+                                                                                                Sin vista
+                                                                                            </label>
+                                                                                        </div>                                                           
+                                                                                    </div>
+                                                                                </div>                      
+                                                                            </div>
+                                                                            <div class="col-md-6 mrg20T">
+                                                                                <div class="panel">
+                                                                                    <div class="panel-heading">
+                                                                                        <h3 class="panel-title"><strong>Vendible</strong></h3>
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+                                                                                        <div class="radio">
+                                                                                            <label>
+                                                                                                <input type="radio" name="txtvendible" id="txtvendible1" value="Si">
+                                                                                                Si
+                                                                                            </label>
+                                                                                        </div>
+                                                                                        <div class="radio">
+                                                                                            <label>
+                                                                                                <input type="radio" name="txtvendible" id="txtvendible2" value="No">
+                                                                                                No
+                                                                                            </label>
+                                                                                        </div>   
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <br>
+                                                                    <br>
+                                                                    <br>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                        <button type="button" id="btnsave" name="btnsave" class="btn btn-success"></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="step-5">
+                                                <div class="content-box">
+                                                    <h3 class="content-box-header bg-default">
+                                                        Otas y canales
+                                                    </h3>
+                                                    <div>
+                                                        <form action="{{pathSite}}" id="frm2" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="path" id="path" value="{{pathSite}}">
+                                                            <input type="hidden" name="idReg" id="idReg" value="{{idReg}}">
+                                                            <input type="hidden" name="Action" id="Action" value="">
+                                                            <div class="panel-heading">
+                                                                    
+                                                            <div class="text-right mt">
+                                    
+                                                                <button class="btn btn-labeled btn-default" data-toggle="modal" data-target="#AgregarOta" type="button">
+                                                                    <span class="btn-label">
+                                                                        <i class="glyph-icon icon-plus"></i>
+                                                                    </span> Agregar OTA
+                                                                </button>
+                                    
+                                                            </div>
+                                                            
+                                                        </div>
+                                                            <div class="panel-body">
+                                                            <h3 class="title-hero">
+                                    
+                                                            </h3>
+                                                            <div class="example-box-wrapper" style="overflow: auto;">
+                                                                <table id="datatable-example" class="table table-striped table-bordered table-hover">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th>Id</th>
+                                                                        <th>OTA</th>
+                                                                        <th>Estatus</th>                                
+                                                                        <th class="">Acción</th>
+                                                                        </tr>
+                                                                    </thead>
+                                    
+                                                                </table>                         
+                                                            </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal fade" id="AgregarOta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title" id="title_modal">Agregar OTA</h4>
+                                                                </div>
+                                                                <div class="modal-body row">
+                                                                    <form id="frm_reset">
+                                                                        <input type="hidden"  name="idAux" id="idAux">
+                                                                        <input type="hidden" name="path" id="path" value="{{pathSite}}"> 
+                                                                        <!-- hotel -->
+                                                                        <br>
+                                                                        <div class="col-md-12 mrg20T">
+                                                                            <label for="">Hotel </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <select name="hotel"  id="txthotel_id" class="chosen-select">  
+                                                                                    
+                                                                                    {% for key,value in hoteles %}    
+                                                                                        <option value="{{value.id}}">{{value.hotel}}</option>
+                                                                                    {% endfor %}                                                          
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>                                                                                                                                                                                                                                                    
+                                                                        <!-- ota -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">OTA</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" class="form-control" id="txtota" name="txtota">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- staus ota -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Estatus OTA </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <select class="form-control" id="txtstatus_ota_id">
+                                                                                <option value="0">Seleccionar un estatus</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- link -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Link de publicación</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" class="form-control" id="txtlink_publicacion" name="txtlink_publicacion">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- comentarios -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Comentarios</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" class="form-control" id="txtcomentarios" name="txtcomentarios">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- usuario -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Usuario</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="text" class="form-control" id="txtusuario" name="txtusuario">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- clave -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Clave</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="password" class="form-control" id="txtclave" name="txtclave">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- correo asociado -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Correo asociado</label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <input type="email" class="form-control" id="txtmail_asociado" name="txtmail_asociado">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- fecha de ultimo pago -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <label for="">Fecha de último pago</label>
+                                                                            <div class="input-prepend input-group">
+                                                                                <span class="add-on input-group-addon">
+                                                                                    <i class="glyph-icon icon-calendar"></i>
+                                                                                </span>
+                                                                                <input type="text" class="bootstrap-datepicker form-control" value="02-16-12" data-date-format="mm/dd/yy" id="txtmfecha_ultimo_pago" name="txtmfecha_ultimo_pago">
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- tiene adeudo -->
+                                                                        <div class="col-md-6 mrg20T">
+                                                                            <div class="panel">
+                                                                                <div class="panel-heading">
+                                                                                    <h3 class="panel-title"><strong>¿Tiene adeudo?</strong></h3>
+                                                                                </div>
+                                                                                <div class="panel-body">
+                                                                                    <div class="radio">
+                                                                                        <label>
+                                                                                            <input type="radio" name="txttiene_adeudo" id="txttiene_adeudo1" value="Si">
+                                                                                            Si
+                                                                                        </label>
+                                                                                    </div>
+                                                                                    <div class="radio">
+                                                                                        <label>
+                                                                                            <input type="radio" name="txttiene_adeudo" id="txttiene_adeudo2" value="No">
+                                                                                            No
+                                                                                        </label>
+                                                                                    </div>   
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div id="adeudo ocultar">
+                                                                            <!-- monto adeudo -->                                                                   
+                                                                            <div class="col-md-6 mrg20T">
+                                                                                <label for="">Monto adeudo</label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                    <input type="text" class="form-control" id="txtmonto_adeudo" name="txtmonto_adeudo">
+                                                                                </div>
+                                                                            </div>
+                                                                            <!-- comision -->
+                                                                            <div class="col-md-6 mrg20T">
+                                                                                <label for="">Comisión</label>
+                                                                                <div class="input-group">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                    <input type="text" class="form-control" id="txtdetalle_comisiones" name="txtdetalle_comisiones">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+                                                                          
+                                                                    </form>  
+                                                                </div>
+                                                                <br>
+                                                                <br>
+                                                                <br>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                                                    <button type="button" id="btnsave" name="btnsave" class="btn btn-success"></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                                                                
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'includesAdmin/footerJS.html' %}
+
+<script>
+var path = $("#path").val();
+let url=path+"includes/ajax/tipo_habitacion.php?tabla=habitacion";
+$.fn.dataTable.ext.errMode = 'none';
+$('#datatable_ajax').DataTable( {
+    "ajax": url
+})
+
+//--> bnt que se encarga de agregar o actualizar segun el valor de su atributo action.
+$('#btnsave').click(()=>{
+    var action = $('#btnsave').attr('action');
+    var url= path +'includes/ajax/tipo_habitacion.php';
+
+    if(action === "save"){
+        //--> datos a enviar al guardar
+            var vist=$('input:radio[name=txtvista]:checked').val();
+            var v=$('input:radio[name=txtvendible]:checked').val();
+        var datos = {
+            "action": "registrar",
+            "habitacion": $('#txthabitacion').val(),
+            "hotel_id": $('#txthotel_id').val(),
+            "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
+            "vista": vist,
+            "detalle": $('#txtdetalle').val(),
+            "vendible": v
+            
+        };
+
+        saveAjax(url,datos);
+    }else{
+            //--> datos a enviar al editar
+            
+            var vist=$('input:radio[name=txtvista]:checked').val();
+            var v=$('input:radio[name=txtvendible]:checked').val();
+        
+        var datos = {
+            "idEditar":$('#idAux').val(),
+            "habitacion": $('#txthabitacion').val(),
+            "hotel_id": $('#txthotel_id').val(),
+            "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
+            "vista": vist,
+            "detalle": $('#txtdetalle').val(),
+            "vendible": v
+        };
+        
+        editAjax(url,datos);
+    }
+    
+})
+
+var id_hotel=$('#txthotel_id').val();
+var datos = {
+    id_hotel: id_hotel,
+};
+tipoHabitacion("includes/ajax/tipo_habitacion.php",datos);
+$('#txthotel_id').on('change', function() {
+var id_hotel=$('#txthotel_id').val();
+var datos = {
+    id_hotel: id_hotel,
+};
+
+tipoHabitacion("includes/ajax/tipo_habitacion.php",datos);
+});
+
+function tipoHabitacion(url,datos){
+
+$.ajax({
+type: "POST",
+async: false,
+url: url,
+data: datos,
+dataType:"text",
+}).done(function (response) {
+        
+        $('#txttipo_habitacion_id').html(response);
+});
+}
+
+
+</script>

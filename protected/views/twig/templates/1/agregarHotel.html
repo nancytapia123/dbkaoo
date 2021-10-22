@@ -1,0 +1,286 @@
+{% include 'includesAdmin/header.html' %}
+    <div id="page-wrapper">
+        {% include 'includesAdmin/header2.html' %} 
+        
+        <div id="page-content-wrapper">
+            <div id="page-content">
+                <div class="container">                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><strong>Agregar Hotel</strong></h3>
+                                </div>
+                                 <div class="panel-body">
+                                    <form id="frm_reset">
+                                        <input type="hidden"  name="idAux" id="idAux">
+                                        <input type="hidden" name="path" id="path" value="{{pathSite}}"> 
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Tipo de hotel </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <select class="form-control" id="txttipo_hotel_id">
+                                                <option value="0">Seleccionar un tipo de hotel</option>
+                                                {% for key,value in tipo_hotel %}    
+                                                    <option value="{{value.id}}">{{value.tipo_hotel}}</option>
+                                                 {% endfor %}  
+                                                </select>
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Hotel </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" class="form-control" id="txthotel" name="txthotel">
+
+                                            </div>
+                                        </div>                                       
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">CUIH </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" class="form-control" id="txtcuih" name="txtcuih">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Código postal </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtcodigo_postal" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Colonia </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <select class="form-control chosen-select"  id="txtcolonia_id">
+                                                <option value="0">Seleccione una colonia</option>
+                                                 
+                                                </select>
+                                            </div>
+                                        </div>   
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">País </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <select class="form-control" id="txtpais_id">
+                                                <option value="0">Seleccionar un pais</option>
+                                                </select>
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Estado </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <select class="form-control" id="txtestado_id">
+                                                <option value="0">Seleccionar un pais</option>
+                                                </select>
+                                            </div>
+                                        </div>  
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Municipio </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <select class="form-control" id="txtmunicipio_id">
+                                                <option value="0">Seleccionar un municipio</option>
+                                                </select>
+                                            </div>
+                                        </div>                                                    
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Calle </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtcalle" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Número interior </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtnumero_interior" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Correo </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtcorreo" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Liga de Google </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtliga_gogole" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Teléfono 1 </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txttelefono" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Teléfono 2 </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txttelefono_2" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Celular </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtcelular" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">No. habitaciones </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtnum_habitaciones" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Página web </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtpagina_web" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Sitio de interes </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <select class="form-control" id="txtsitio_interes_id">
+                                                <option value="0">Seleccionar un sitio</option>
+                                                {% for key,value in sitio_interes %}    
+                                                <option value="{{value.id}}">{{value.sitio_interes}}</option>
+                                            {% endfor %} 
+                                                </select>
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Depósito </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtdeposito" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Mascota </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txtmascota" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mrg20T">
+                                            <label for="">Tarifa promedio </label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                <input type="text" id="txttarifa_promedio" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12" style="margin-left: 750px;">
+                                            <button type="button" class="btn btn-default" id="regresar">Cancelar</button>
+                                            <button type="button" id="btnsave" name="btnsave" class="btn btn-success">Guardar</button>
+                                        </div>
+                                        
+                                    </form>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% include 'includesAdmin/footerJS.html' %}
+   
+<script>
+
+$('#regresar').click(() => {
+         $(location).attr('href', "{{pathSite}}hotel");
+      });
+var path = $("#path").val();
+let url=path+"includes/ajax/tipo_habitacion.php?tabla=habitacion";
+$.fn.dataTable.ext.errMode = 'none';
+$('#datatable_ajax').DataTable( {
+      "ajax": url
+})
+
+ //--> bnt que se encarga de agregar o actualizar segun el valor de su atributo action.
+ $('#btnsave').click(()=>{
+        var action = $('#btnsave').attr('action');
+        var url= path +'includes/ajax/tipo_habitacion.php';
+
+        if(action === "save"){
+            //--> datos a enviar al guardar
+             var vist=$('input:radio[name=txtvista]:checked').val();
+             var v=$('input:radio[name=txtvendible]:checked').val();
+            var datos = {
+                "action": "registrar",
+               "habitacion": $('#txthabitacion').val(),
+               "hotel_id": $('#txthotel_id').val(),
+               "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
+               "vista": vist,
+               "detalle": $('#txtdetalle').val(),
+               "vendible": v
+              
+            };
+
+            saveAjax(url,datos);
+        }else{
+             //--> datos a enviar al editar
+             
+             var vist=$('input:radio[name=txtvista]:checked').val();
+             var v=$('input:radio[name=txtvendible]:checked').val();
+            
+            var datos = {
+                "idEditar":$('#idAux').val(),
+                "habitacion": $('#txthabitacion').val(),
+               "hotel_id": $('#txthotel_id').val(),
+               "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
+               "vista": vist,
+               "detalle": $('#txtdetalle').val(),
+               "vendible": v
+            };
+            
+            editAjax(url,datos);
+        }
+        
+    })
+
+    var id_hotel=$('#txthotel_id').val();
+    var datos = {
+      id_hotel: id_hotel,
+    };
+    tipoHabitacion("includes/ajax/tipo_habitacion.php",datos);
+ $('#txthotel_id').on('change', function() {
+    var id_hotel=$('#txthotel_id').val();
+    var datos = {
+      id_hotel: id_hotel,
+    };
+   
+    tipoHabitacion("includes/ajax/tipo_habitacion.php",datos);
+});
+
+function tipoHabitacion(url,datos){
+    
+    $.ajax({
+    type: "POST",
+    async: false,
+    url: url,
+    data: datos,
+    dataType:"text",
+    }).done(function (response) {
+            
+            $('#txttipo_habitacion_id').html(response);
+    });
+}
+
+
+</script>

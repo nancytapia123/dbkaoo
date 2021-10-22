@@ -1,0 +1,138 @@
+{% include 'includesAdmin/header.html' %}
+    <div id="page-wrapper">
+        {% include 'includesAdmin/header2.html' %} 
+        
+        <div id="page-content-wrapper">
+            <div id="page-content">
+                <div class="container">                   
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <div class="profile-box content-box">
+                                <div class="content-box-header clearfix bg-default">
+                                    <img src="{{ pathCMSSite }}includes/img/habitacion.png" alt="" width="54" class="img-bordered border-blue img-circle">
+                                    <form  action="{{pathSite}}agregar-hotel" id="frm2" method="POST" enctype="multipart/form-data">
+                                        <div class="user-details">
+                                            HOTELES
+                                            <span>Captura de hoteles</span>
+                                            <button class="btn btn-abs btn-sm btn-sm-abs text-transform-upr font-bold font-size-11 btn-info"   type="submit">
+                                                Agregar
+                                            </button>
+                                        
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="list-group">
+                                    <div class="example-box-wrapper tablaDesign" > 
+                                                                                                   
+                                        <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="datatable_ajax">
+                                            <thead>
+                                            <tr>
+                                                <th>Id</th>
+                                                <th>Habitación</th>
+                                                <th>Hotel</th>
+                                                <th>Tipo de habitación</th>
+                                                <th>Vista</th>
+                                                <th>Detalle</th>
+                                                <th>Vendible</th>
+                                                <th>Acciones</th>
+                                                
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                       
+                                            </tbody>
+                                        </table>                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% include 'includesAdmin/footerJS.html' %}
+   
+<script>
+var path = $("#path").val();
+let url=path+"includes/ajax/tipo_habitacion.php?tabla=habitacion";
+$.fn.dataTable.ext.errMode = 'none';
+$('#datatable_ajax').DataTable( {
+      "ajax": url
+})
+
+ //--> bnt que se encarga de agregar o actualizar segun el valor de su atributo action.
+ $('#btnsave').click(()=>{
+        var action = $('#btnsave').attr('action');
+        var url= path +'includes/ajax/tipo_habitacion.php';
+
+        if(action === "save"){
+            //--> datos a enviar al guardar
+             var vist=$('input:radio[name=txtvista]:checked').val();
+             var v=$('input:radio[name=txtvendible]:checked').val();
+            var datos = {
+                "action": "registrar",
+               "habitacion": $('#txthabitacion').val(),
+               "hotel_id": $('#txthotel_id').val(),
+               "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
+               "vista": vist,
+               "detalle": $('#txtdetalle').val(),
+               "vendible": v
+              
+            };
+
+            saveAjax(url,datos);
+        }else{
+             //--> datos a enviar al editar
+             
+             var vist=$('input:radio[name=txtvista]:checked').val();
+             var v=$('input:radio[name=txtvendible]:checked').val();
+            
+            var datos = {
+                "idEditar":$('#idAux').val(),
+                "habitacion": $('#txthabitacion').val(),
+               "hotel_id": $('#txthotel_id').val(),
+               "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
+               "vista": vist,
+               "detalle": $('#txtdetalle').val(),
+               "vendible": v
+            };
+            
+            editAjax(url,datos);
+        }
+        
+    })
+
+    var id_hotel=$('#txthotel_id').val();
+    var datos = {
+      id_hotel: id_hotel,
+    };
+    tipoHabitacion("includes/ajax/tipo_habitacion.php",datos);
+ $('#txthotel_id').on('change', function() {
+    var id_hotel=$('#txthotel_id').val();
+    var datos = {
+      id_hotel: id_hotel,
+    };
+   
+    tipoHabitacion("includes/ajax/tipo_habitacion.php",datos);
+});
+
+function tipoHabitacion(url,datos){
+    
+    $.ajax({
+    type: "POST",
+    async: false,
+    url: url,
+    data: datos,
+    dataType:"text",
+    }).done(function (response) {
+            
+            $('#txttipo_habitacion_id').html(response);
+    });
+}
+
+
+</script>
