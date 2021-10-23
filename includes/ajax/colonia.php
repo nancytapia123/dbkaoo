@@ -47,8 +47,8 @@ function viewTableAjax($url,$sql,$table,$title,$db){
 //--> Muestra los datos en la tabla
 if(isset($tabla)){
     $url = "$pathSitioCMS/includes/ajax/colonia.php";
-    $sql="SELECT c.id,c.clave,m.nombre AS municipio,c.nombre FROM colonia AS c 
-    INNER JOIN municipio AS m ON m.id=c.municipio_id";
+    $sql=" SELECT c.id,c.nombre,c.ciudad,m.nombre AS municipio,c.asentamiento,c.codigo_postal FROM colonia AS c INNER JOIN 
+    municipio AS m ON m.id=c.municipio_id ";
     
     $titulo = "Colonias";
     viewTableAjax($url,$sql,$tabla,$titulo,$db);

@@ -2,3 +2,71 @@
     overflow: auto;
     padding: 30px;
 }
+
+.datagrid table {
+    border-collapse: collapse; 
+    text-align: center; 
+    width: 100%; 
+} 
+
+.datagrid {
+   font: normal 12px/150% Arial, Helvetica, sans-serif;
+   background: #fff;
+   border-radius: 5px; 
+}
+
+
+.datagrid table thead th {
+   background-color:#2a83dc  !important;
+   color:#FFFFFF !important; 
+   font-size: 10px;  
+   text-align: center;
+}
+
+.datagrid table tbody td {
+    color: #00496B; 
+    border-left: 1px solid #E1EEF4;
+    border-right: 1px solid #E1EEF4;
+    border-bottom: 1px solid #E1EEF4;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.datagrid table tbody .alt td {
+    background: #E1EEF4; 
+    color: #00496B; 
+}
+
+.datagrid table tbody tr:nth-child(even){ 
+   background-color: #2a83dc1a; 
+   color: #00496B; 
+   
+}
+
+#back-pers{
+
+   background-color:#006699; 
+   color: white;
+   text-align: center;
+   font-weight: bold;
+}
+
+.modal-body{
+   margin: 10px;
+}
+
+#select-periodo{
+   margin-left: 22px;
+   font-weight: bold;
+}
+
+#lank{
+   color: #00496B;
+}
+
+#lank2{
+   color: white;
+}
+#lank3{
+   color: #3e4855;
+}
