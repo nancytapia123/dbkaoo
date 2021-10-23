@@ -17,7 +17,7 @@ function viewTableAjax($url,$sql,$table,$title,$db){
     $cursos = $db->prepare($sql);
     $cursos->execute();
     $cursos = $cursos->fetchAll(PDO::FETCH_OBJ);
-  
+ 
  
   $dataJson = '{
     "data":[';
@@ -46,10 +46,8 @@ function viewTableAjax($url,$sql,$table,$title,$db){
 
  if(isset($tabla)){
     $url = "$pathSitioCMS/includes/ajax/tipo_habitacion.php";
-    $sql="SELECT h.id,h.habitacion,ho.hotel, th.tipo_habitacion,h.vista,h.detalle,h.vendible FROM habitacion AS h
-          INNER JOIN tipo_habitacion  AS th ON h.tipo_habitacion_id=th.id
+    $sql="SELECT h.id,h.habitacion,ho.hotel,h.vista,h.detalle,h.vendible FROM habitacion AS h  
           INNER JOIN hotel  AS ho ON h.hotel_id=ho.id";
-    
     $titulo = "habitacion";
 
     viewTableAjax($url,$sql,$tabla,$titulo,$db);
@@ -57,9 +55,9 @@ function viewTableAjax($url,$sql,$table,$title,$db){
 } 
 //--> Inserta un nuevo registro
 if(isset($action) && $action=="registrar"){
-    $sql="INSERT INTO habitacion VALUES (null,'$habitacion','$hotel_id','$tipo_habitacion_id','$vista','$detalle','$vendible')";
+    $sql="INSERT INTO habitacion (tipo_habitacion_id, habitacion, hotel_id, vista, detalle, vendible) VALUES ('$tipo_habitacion_id','$habitacion','$hotel_id','$vista','$detalle','$vendible')";
     $cursoss = $db->prepare($sql);
-    
+  
     if($cursoss->execute()){
         echo true;
     }else{
@@ -78,9 +76,12 @@ if(isset($action) && $action=="delete"){
     }
 }
 //--> Retorna los datos del registro a editar
+
 if(isset($action) && $action=="edit"){
     $sql="SELECT * FROM $table WHERE id= $id";
+    
     $cursos = $db->prepare($sql);
+    
     $cursos->execute();
     $cursos = $cursos->fetchAll(PDO::FETCH_OBJ);
 
@@ -91,9 +92,10 @@ if(isset($action) && $action=="edit"){
 if(isset($idEditar)){
 
     
-    $sql="UPDATE habitacion SET habitacion=$habitacion,
+    $sql="UPDATE habitacion SET habitacion='$habitacion',
     hotel_id=$hotel_id,tipo_habitacion_id='$tipo_habitacion_id',vista='$vista',
     detalle='$detalle',vendible='$vendible' WHERE id = $idEditar";
+     
     $cursos = $db->prepare($sql);
     $cursos->execute();
     if($cursos->execute()){
@@ -114,7 +116,7 @@ if(isset($action) && $action=="delete"){
         echo false;
     }
 }
-if(isset($id_hotel)){
+ if(isset($id_hotel)){
     $sql="SELECT htp.*,tp.tipo_habitacion FROM hotel_has_tipo_habitacion AS htp 
     INNER JOIN tipo_habitacion AS tp ON htp.tipo_habitacion_id=tp.id
      WHERE hotel_id=$id_hotel";      
@@ -128,5 +130,7 @@ if(isset($id_hotel)){
      
   }
   echo  $option;
-}
+} 
+
+
 

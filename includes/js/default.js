@@ -18,7 +18,7 @@ $(".cmdDesplegarChange").click(function () {
       dataType: "json",
     });
   });
-  
+  /******** modulo de habitaciones ********/
 //--> Btn Agregar(Abre modal crud ajax)
 function btnAddModalAjax(frm,textBtn,title){
   document.getElementById(frm).reset();
@@ -26,14 +26,6 @@ function btnAddModalAjax(frm,textBtn,title){
   $('#btnsave').html(textBtn);
   $('#title_modal').html(title);
   $("#modalAjax").modal();
-}
-//--> Btn Agregar(Abre otra pantalla crud ajax)
-function btnAddVentanaAjax(frm,textBtn,title,rutaVentana){
-  document.getElementById(frm).reset();
-  $('#btnsave').attr("action","save");
-  $('#btnsave').html(textBtn);
-  $('#frm2').attr("action","rutaVentana");
-  
 }
 
 //--> Botnes del modal ajax
@@ -102,7 +94,6 @@ function BtnEditarAjax(id) {
   
   }
 
-
   function editAjax(url,datos){
     $.ajax({
       url: url,
@@ -119,7 +110,7 @@ function BtnEditarAjax(id) {
               theme: 'bg-blue-alt'
           });
             $("#modalAjax").modal('hide');
-            $('#datatable_ajax').DataTable().ajax.reload();
+            $('#tablaHabitacion').DataTable().ajax.reload();
         
           }else{
             $.jGrowl("Los datos no pueden ser vacios.", {
@@ -134,8 +125,6 @@ function BtnEditarAjax(id) {
     });
 
 }
-
-
 
 function BtnElimanarAjax(id){
   var url = $('#removeAjax').attr('url');
@@ -161,7 +150,297 @@ function BtnElimanarAjax(id){
             position: 'top-right',
             theme: 'bg-blue-alt'
         });
-          $('#datatable_ajax').DataTable().ajax.reload();
+          $('#tablaHabitacion').DataTable().ajax.reload();
+        }else{
+          $.jGrowl("No sepueden eliminar los datos consulte a un administrador.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-red'
+        });
+        }
+      }
+  });
+}
+
+/******** modulo de empleados ********/
+
+//--> Btn Agregar(Abre modal crud ajax)
+function btnAddModalEmpleado(frm,textBtn,title){
+  document.getElementById(frm).reset();
+  $('#btnsaveEmpleado').attr("action","saveEmpleado");
+  $('#btnsaveEmpleado').html(textBtn);
+  $('#title_modal').html(title);
+  $("#ModalEmpleado").modal();
+}
+
+//--> Botnes del modal ajax
+function saveAjaxEmple(url,datos){
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: datos,
+    async: false,
+    dataType: "text",
+    success: function (respuesta){
+      console.log("data: ", respuesta);
+        if(respuesta){
+          
+          $.jGrowl("Registro guardado.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-blue-alt'
+        });
+          $("#ModalEmpleado").modal('hide');
+          $('#TablaEmpleado').DataTable().ajax.reload();
+          document.getElementById("frm_empleado").reset();
+        }else{
+          $.jGrowl("Los datos no pueden ser vacios.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-red'
+        });
+        }
+
+    }
+  });
+
+}
+
+//--> Botnes de la tabla ajax
+function BtnEditarEmpleado(id) {
+  
+  var i=$('#idAuxx').val(id);
+  
+  var url = $('#editAjaxEmpleado').attr('url');
+  var table = $('#editAjaxEmpleado').attr('table');
+  var titulo_modal = $('#editAjaxEmpleado').attr('title_modal');
+ 
+  $.ajax({
+      url:url,
+      type: "POST",
+      data: {"action":"EditarEmpleado",id:id,"tableEmple":table},
+      async: false,
+      dataType: "json",
+      success: function (respuesta){
+  
+      $.each(respuesta[0], function(key, item) {
+          $('#txt'+key).val(item);
+      });
+  
+      $('#title_modal').html(titulo_modal);
+      $('#btnsaveEmpleado').attr("action","EditarEmpleado");
+      $('#btnsaveEmpleado').html("Editar");
+      $("#ModalEmpleado").modal();
+     
+      
+      }
+  });
+  
+  
+  }
+
+  function editAjaxEmple(url,datos){
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: datos,
+      async: false,
+      dataType: "text",
+      success: function (respuesta){
+          if(respuesta){
+            
+            $.jGrowl("Registro actualizado.", {
+              sticky: false,
+              position: 'top-right',
+              theme: 'bg-blue-alt'
+          });
+            $("#ModalEmpleado").modal('hide');
+            $('#TablaEmpleado').DataTable().ajax.reload();
+        
+          }else{
+            $.jGrowl("Los datos no pueden ser vacios.", {
+              sticky: false,
+              position: 'top-right',
+              theme: 'bg-red'
+          });
+          }
+
+
+      }
+    });
+
+}
+
+function BtnElimanarEmpleado(id){
+  var url = $('#removeAjaxEmpleado').attr('url');
+  var tableEmpleDe = $('#removeAjaxEmpleado').attr('table');
+  
+   var r = confirm(unescape("¿Desea eliminar el registro?"));
+    if (r == false) {
+        return false;
+    }
+  
+    
+  
+  $.ajax({
+      url: url,
+      type: "POST",
+      data: {"action":"deleteEmpl",idElimi:id,"tableEmpleDe":tableEmpleDe},
+      async: false,
+      dataType: "text",
+      success: function (respuesta){
+        if(respuesta){
+          $.jGrowl("Registro eliminado.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-blue-alt'
+        });
+        $('#TablaEmpleado').DataTable().ajax.reload();
+        }else{
+          $.jGrowl("No sepueden eliminar los datos consulte a un administrador.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-red'
+        });
+        }
+      }
+  });
+}
+
+
+/**** OTA  ***/
+
+
+//--> Btn Agregar(Abre modal crud ajax)
+function btnAddModalOta(frm,textBtn,title){
+  document.getElementById(frm).reset();
+  $('#btnsaveOta').attr("action","saveOta");
+  $('#btnsaveOta').html(textBtn);
+  $('#title_modal').html(title);
+  $("#AgregarOta").modal();
+}
+//--> Botnes del modal ajax
+function saveAjaxOta(url,datos){
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: datos,
+    async: false,
+    dataType: "text",
+    success: function (respuesta){
+      console.log("data: ", respuesta);
+        if(respuesta){
+          
+          $.jGrowl("Registro guardado.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-blue-alt'
+        });
+          $("#AgregarOta").modal('hide');
+          $('#TablaaOta').DataTable().ajax.reload();
+          document.getElementById("frm_Ota").reset();
+        }else{
+          $.jGrowl("Los datos no pueden ser vacios.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-red'
+        });
+        }
+
+    }
+  });
+
+}
+//--> Botnes de la tabla ajax
+function BtnEditarOta(id) {
+  
+  var i=$('#idAuxr').val(id);
+  
+  var url = $('#editAjaxOta').attr('url');
+  var table = $('#editAjaxOta').attr('table');
+  var titulo_modal = $('#editAjaxOta').attr('title_modal');
+ 
+  $.ajax({
+      url:url,
+      type: "POST",
+      data: {"action":"EditarOta",id:id,"tableOta":table},
+      async: false,
+      dataType: "json",
+      success: function (respuesta){
+  
+      $.each(respuesta[0], function(key, item) {
+          $('#txt'+key).val(item);
+      });
+  
+      $('#title_modal').html(titulo_modal);
+      $('#btnsaveOta').attr("action","EditarEmpleado");
+      $('#btnsaveOta').html("Editar");
+      $("#AgregarOta").modal();
+     
+      
+      }
+  });
+  
+  
+  }
+
+function editAjaxOta(url,datos){
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: datos,
+    async: false,
+    dataType: "text",
+    success: function (respuesta){
+        if(respuesta){
+          
+          $.jGrowl("Registro actualizado.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-blue-alt'
+        });
+        $("#AgregarOta").modal('hide');
+        $('#TablaaOta').DataTable().ajax.reload();
+      
+        }else{
+          $.jGrowl("Los datos no pueden ser vacios.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-red'
+        });
+        }
+
+
+    }
+  });
+
+}
+
+function BtnEliminarOta(id){
+  var url = $('#removeAjaxOta').attr('url');
+  var tableOta = $('#removeAjaxOta').attr('table');
+  
+   var r = confirm(unescape("¿Desea eliminar el registro?"));
+    if (r == false) {
+        return false;
+    }
+  
+    
+  
+  $.ajax({
+      url: url,
+      type: "POST",
+      data: {"action":"deleteOta",idEliOta:id,"tableOta":tableOta},
+      async: false,
+      dataType: "text",
+      success: function (respuesta){
+        if(respuesta){
+          $.jGrowl("Registro eliminado.", {
+            sticky: false,
+            position: 'top-right',
+            theme: 'bg-blue-alt'
+        });
+        $('#TablaaOta').DataTable().ajax.reload();
         }else{
           $.jGrowl("No sepueden eliminar los datos consulte a un administrador.", {
             sticky: false,

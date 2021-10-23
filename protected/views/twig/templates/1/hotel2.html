@@ -308,8 +308,8 @@
                                                         Contrato
                                                     </h3>
                                                     <div class="content-box-wrapper">
-                                                        <form id="frm_reset">
-                                                            <input type="hidden"  name="idAux" id="idAux">
+                                                        <form id="frm_contrato">
+                                                            <input type="hidden"  name="idAux2" id="idAux2">
                                                                 <!-- contrato -->
                                                             <div class="panel ">
                                                                 <div class="panel-body">
@@ -413,14 +413,14 @@
                                                     <h3 class="content-box-header bg-default">
                                                         Empleados
                                                     </h3>
-                                                    <div>
-                                                        <form action="{{pathSite}}" id="frm2" method="POST" enctype="multipart/form-data">
+                                                    <div>                             
                                                         
                                                             <div class="panel-heading">
                                                                     
                                                             <div class="text-right mt">
-                                    
-                                                                <button class="btn btn-labeled btn-default" data-toggle="modal" data-target="#AgregarUsuario" type="button">
+                                                                <input type="hidden" name="pathh" id="pathh" value="{{pathSite}}"> 
+
+                                                                <button class="btn btn-labeled btn-default" onclick="btnAddModalEmpleado('frm_empleado','Guardar','Agregar nuevo empleado')" type="button">
                                                                     <span class="btn-label">
                                                                         <i class="glyph-icon icon-plus"></i>
                                                                     </span> Agregar
@@ -434,10 +434,11 @@
                                     
                                                             </h3>
                                                             <div class="example-box-wrapper datagrid" style="overflow: auto;">
-                                                                <table  class="table table-striped table-bordered table-hover datatable-example2 ">
+                                                                <table id="TablaEmpleado" class="table table-striped table-bordered table-hover  ">
                                                                     <thead>
                                                                         <tr>
                                                                         <th>Id</th>
+                                                                        <th>Hotel</th>
                                                                         <th>Nombre</th>
                                                                         <th>Correo</th>                                
                                                                         <th>Teléfono fijo</th>
@@ -445,16 +446,16 @@
                                                                         <th>Acceso a HMS de KAO</th>                                 
                                                                         <th>Manejo de OTA</th>
                                                                         <th>Puesto</th>
+                                                                        <th>Actividad</th>
                                                                         <th class="">Acción</th>
                                                                         </tr>
                                                                     </thead>
                                     
                                                                 </table>                         
                                                             </div>
-                                                            </div>
-                                                        </form>
+                                                         </div>                                                 
                                                     </div>
-                                                    <div class="modal fade" id="AgregarUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="ModalEmpleado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -462,47 +463,32 @@
                                                                     <h4 class="modal-title" id="title_modal">Agregar empleado</h4>
                                                                 </div>
                                                                 <div class="modal-body row">
-                                                                    <form id="frm_reset">
-                                                                        <input type="hidden"  name="idAux" id="idAux">
-                                                                        <input type="hidden" name="path" id="path" value="{{pathSite}}"> 
+                                                                    <form id="frm_empleado">
+                                                                        <input type="hidden"  name="idAuxx" id="idAuxx">
                                                                         <div class="col-md-12 mrg20T">
                                                                             <label for="">Hotel </label>
                                                                             <div class="input-group">
-                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <input type="text" class="form-control" name="txthotel_id" id="txthotel_id">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>  
+                                                                                <input type="text" value="{{hotel.hotel}}" class="form-control">                          
+                                                                                <input type="hidden" class="form-control" name="txthotel_id_empleado" id="txthotel_id_empleado" value="{{hotel.id}}">
 
                                                                             </div>
                                                                         </div>
                                                                         <!-- nombre -->
                                                                         <div class="col-md-6 mrg20T">
-                                                                            <label for="">Nombre </label>
+                                                                            <label for="">Nombre completo </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <input type="text" class="form-control" id="txtnombre" name="txtnombre">
+                                                                                <input type="text" class="form-control" id="txtempleado" name="txtempleado">
                                                                             </div>
                                                                         </div>
-                                                                            <!-- Ap paterno -->
-                                                                        <div class="col-md-6 mrg20T">
-                                                                            <label for="">Apellido paterno </label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon"><i class="glyph-icon icon-user"></i></span>                          
-                                                                                <input type="text" id="txtapellido_paterno" class="form-control">
-                                                                            </div>
-                                                                        </div>
-                                                                            <!-- Ap materno -->
-                                                                        <div class="col-md-6 mrg20T">
-                                                                            <label for="">Apellido materno </label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon"><i class="glyph-icon icon-user"></i></span>                          
-                                                                                <input type="text" id="txtapellido_materno" class="form-control">
-                                                                            </div>
-                                                                        </div>
+                                                                       
                                                                             <!--  correo -->
                                                                         <div class="col-md-6 mrg20T">
                                                                             <label for="">Correo </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-email"></i></span>                          
-                                                                                <input type="email" id="txtcorreo" class="form-control">
+                                                                                <input type="text" id="txtcorreo2" class="form-control">
                                                                             </div>
                                                                         </div> 
                                                                         <!--  tel fijo -->
@@ -510,7 +496,7 @@
                                                                             <label for="">Teléfono fijo </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <input type="text" id="txtcorreo" class="form-control">
+                                                                                <input type="text" id="txttelefono2" class="form-control">
                                                                             </div>
                                                                         </div> 
                                                                         <!--  celular -->
@@ -518,7 +504,7 @@
                                                                             <label for="">Celular </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <input type="text" id="txtcelular" class="form-control">
+                                                                                <input type="text" id="txtcelular2" class="form-control">
                                                                             </div>
                                                                         </div>   
                                                                         <!--  acceso hms -->
@@ -572,8 +558,24 @@
                                                                             <label for="">Puesto </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <select class="form-control" id="txtactividades">
+                                                                                <select class="form-control" id="txtpuesto_id">
                                                                                 <option value="0">Seleccionar un puesto</option>
+                                                                                  {% for k, val in puesto %}
+                                                                                    <option value="{{val.id}}">{{val.puesto}}</option>
+                                                                                    {% endfor %}
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                         <!--  actividad -->
+                                                                         <div class="col-md-6 mrg20T">
+                                                                            <label for="">Actividad </label>
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <select class="form-control" id="txtactividad_id">
+                                                                                <option value="0">Seleccionar una actividad</option>
+                                                                                {% for k, val in actividad %}
+                                                                                <option value="{{val.id}}">{{val.actividad}}</option>
+                                                                                {% endfor %}
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -585,7 +587,7 @@
                                                                 <br>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" id="btnsave" name="btnsave" class="btn btn-success"></button>
+                                                                    <button type="button" id="btnsaveEmpleado" name="btnsaveEmpleado" class="btn btn-success"></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -597,51 +599,48 @@
                                                     <h3 class="content-box-header bg-default">
                                                         HABITACIÓN
                                                     </h3>
-                                                    <div class="">
-                                                        <form action="{{pathSite}}" id="frm2" method="POST" enctype="multipart/form-data">
-                                                        
-                                                            <div class="panel-heading">
+                                                    <div class="">                                                                                                              
+                                                        <div class="panel-heading">
+                                                                    
+                                                            <div class="text-right mt">
+                                    
+                                                                <button class="btn btn-labeled btn-default" onclick="btnAddModalAjax('frm_reset','Guardar','Agregar nueva habitacion')" type="button" >
+                                                                    <span class="btn-label">
+                                                                        <i class="glyph-icon icon-plus"></i>
+                                                                    </span> Agregar
+                                                                </button>
+                                    
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <h3 class="title-hero">
+                                    
+                                                            </h3>
+                                                            <div class="list-group">
+                                                            <div class="example-box-wrapper tablaDesign datagrid" > 
+                                                                                                                            
+                                                                <table cellpadding="0" cellspacing="0"  class="table table-striped table-bordered" id="tablaHabitacion">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Id</th>
+                                                                        <th>Habitación</th>
+                                                                        <th>Hotel</th>
+                                                                       
+                                                                        <th>Vista</th>
+                                                                        <th>Detalle</th>
+                                                                        <th>Vendible</th>
+                                                                        <th>Acciones</th>
                                                                         
-                                                                <div class="text-right mt">
-                                        
-                                                                    <button class="btn btn-labeled btn-default" onclick="btnAddModalAjax('frm_reset','Guardar','Agregar nueva habitacion')" type="button" >
-                                                                        <span class="btn-label">
-                                                                            <i class="glyph-icon icon-plus"></i>
-                                                                        </span> Agregar
-                                                                    </button>
-                                        
-                                                                </div>
-                                                                
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                
+                                                                    </tbody>
+                                                                </table>                                
                                                             </div>
-                                                            <div class="panel-body">
-                                                                <h3 class="title-hero">
-                                        
-                                                                </h3>
-                                                                <div class="list-group">
-                                                                <div class="example-box-wrapper tablaDesign datagrid" > 
-                                                                                                                                
-                                                                    <table cellpadding="0" cellspacing="0"  class="table table-striped table-bordered" id="datatable_ajax">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th>Id</th>
-                                                                            <th>Habitación</th>
-                                                                            <th>Hotel</th>
-                                                                            <th>Tipo de habitación</th>
-                                                                            <th>Vista</th>
-                                                                            <th>Detalle</th>
-                                                                            <th>Vendible</th>
-                                                                            <th>Acciones</th>
-                                                                            
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                    
-                                                                        </tbody>
-                                                                    </table>                                
-                                                                </div>
-                                                            </div>
-                                                            </div>
-                                                        </form>
+                                                        </div>
+                                                        </div>                                                       
                                                         <div class="modal fade" id="modalAjax" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -656,19 +655,21 @@
                                                                             <div class="col-md-12 mrg20T">
                                                                                 <label for="">Hotel </label>
                                                                                 <div class="input-group">
-                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
-                                                                                   <input type="text" class="form-control" name="txthotel_id" id="txthotel_id">
+                                                                                    <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>
+                                                                                    <input type="text" value="{{hotel.hotel}}" class="form-control">                          
+                                                                                   <input type="hidden" class="form-control" name="txthotel_id" id="txthotel_id" value="{{hotel.id}}">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12 mrg20T">
+                                                                          <div class="col-md-12 mrg20T">
                                                                                 <label for="">Tipo de habitación </label>
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
                                                                                     <select class="form-control" id="txttipo_habitacion_id">
-                                                                                    <option value="0">Seleccionar un hotel</option>
+                                                                                    <option value="0">Seleccionar una habitacion</option>
+                                                                                    
                                                                                     </select>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> 
                                                                             <div class="col-md-6 mrg20T">
                                                                                 <label for="">Número de habitación </label>
                                                                                 <div class="input-group">
@@ -754,10 +755,10 @@
                                                                     
                                                             <div class="text-right mt">
                                     
-                                                                <button class="btn btn-labeled btn-default" data-toggle="modal" data-target="#AgregarOta" type="button">
+                                                                <button class="btn btn-labeled btn-default" onclick="btnAddModalOta('frm_Ota','Guardar','Agregar nueva Ota')" type="button">
                                                                     <span class="btn-label">
                                                                         <i class="glyph-icon icon-plus"></i>
-                                                                    </span> Agregar OTA
+                                                                    </span> Agregar
                                                                 </button>
                                     
                                                             </div>
@@ -768,12 +769,18 @@
                                     
                                                             </h3>
                                                             <div class="example-box-wrapper datagrid" style="overflow: auto;">
-                                                                <table id="TableOta" class="table table-striped table-bordered table-hover tableOta">
+                                                                <table id="TablaaOta" class="table table-striped table-bordered table-hover ">
                                                                     <thead>
                                                                         <tr>
                                                                         <th>Id</th>
                                                                         <th>OTA</th>
-                                                                        <th>Estatus</th>                                
+                                                                        <th>Estatus</th>
+                                                                        <th>Hotel</th>
+                                                                        <th>Link de publicacion</th>                                                                         
+                                                                        <th>Mail asociado</th>  
+                                                                        <th>Último pago</th>
+                                                                        <th>Monto adeudo</th> 
+                                                                        <th>Comisión</th>                          
                                                                         <th class="">Acción</th>
                                                                         </tr>
                                                                     </thead>
@@ -788,37 +795,43 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                                    <h4 class="modal-title" id="title_modal">Agregar OTA</h4>
+                                                                    <h4 class="modal-title" id="title_modal">Agregar</h4>
                                                                 </div>
                                                                 <div class="modal-body row">
-                                                                    <form id="frm_reset">
-                                                                        <input type="hidden"  name="idAux" id="idAux">
-                                                                        <input type="hidden" name="path" id="path" value="{{pathSite}}"> 
+                                                                    <form id="frm_Ota">
+                                                                        <input type="hidden"  name="idAuxr" id="idAuxr">
+                                                                        
                                                                         <!-- hotel -->
                                                                         <br>
                                                                         <div class="col-md-12 mrg20T">
                                                                             <label for="">Hotel </label>
                                                                             <div class="input-group">
-                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <input type="text" class="form-control" name="txthotel_id" id="txthotel_id">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                                                                                                         
+                                                                                <input type="text" value="{{hotel.hotel}}" class="form-control">                          
+                                                                                <input type="hidden" class="form-control" name="txthotel_id_ota" id="txthotel_id_ota" value="{{hotel.id}}">
 
                                                                             </div>
                                                                         </div>                                                                                                                                                                                                                                                    
                                                                         <!-- ota -->
                                                                         <div class="col-md-6 mrg20T">
-                                                                            <label for="">OTA</label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                <input type="text" class="form-control" id="txtota" name="txtota">
-                                                                            </div>
+                                                                            <label for="">OTA</label>                       
+                                                                            <select class="form-control" id="txtota_id">
+                                                                                <option value="0">Seleccionar una OTA</option>     
+                                                                                {% for k,val in ota %}
+                                                                                <option value="{{val.id}}">{{val.ota}}</option>
+                                                                                {% endfor %}                                                                          
+                                                                             </select>
                                                                         </div>
-                                                                        <!-- staus ota -->
+                                                                        <!-- status ota -->
                                                                         <div class="col-md-6 mrg20T">
                                                                             <label for="">Estatus OTA </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
                                                                                 <select class="form-control" id="txtstatus_ota_id">
                                                                                 <option value="0">Seleccionar un estatus</option>
+                                                                                {% for k,val in status_ota %}
+                                                                                <option value="{{val.id}}">{{val.status_ota}}</option>
+                                                                                {% endfor %}
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -881,13 +894,13 @@
                                                                                 <div class="panel-body">
                                                                                     <div class="radio">
                                                                                         <label>
-                                                                                            <input type="radio" name="txttiene_adeudo" id="txttiene_adeudo1" value="Si">
+                                                                                            <input type="radio" name="txttiene_adeudo" id="txttiene_adeudo1" value="1">
                                                                                             Si
                                                                                         </label>
                                                                                     </div>
                                                                                     <div class="radio">
                                                                                         <label>
-                                                                                            <input type="radio" name="txttiene_adeudo" id="txttiene_adeudo2" value="No">
+                                                                                            <input type="radio" name="txttiene_adeudo" id="txttiene_adeudo2" value="0">
                                                                                             No
                                                                                         </label>
                                                                                     </div>   
@@ -921,7 +934,7 @@
                                                                 <br>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                                                    <button type="button" id="btnsave" name="btnsave" class="btn btn-success"></button>
+                                                                    <button type="button" id="btnsaveOta" name="btnsaveOta" class="btn btn-success"></button>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -946,12 +959,13 @@
 <script src="{{ pathSite }}includes/js/hotel.js"></script>
 <script>
       $(".datatable-example2").dataTable();
-      $(".tableOta").dataTable();
+     
       
 var path = $("#path").val();
 let url=path+"includes/ajax/tipo_habitacion.php?tabla=habitacion";
+
 $.fn.dataTable.ext.errMode = 'none';
-$('#datatable_ajax').DataTable( {
+$('#tablaHabitacion').DataTable( {
     "ajax": url
 })
 
@@ -1053,7 +1067,7 @@ $("#txtcodigo_postal").keyup(function (event) {
       }
 
 
-//--> bnt que se encarga de agregar o actualizar segun el valor de su atributo action.
+//--> bnt que se encarga de agregar o actualizar habitacion.
 $('#btnsave').click(()=>{
     var action = $('#btnsave').attr('action');
     var url= path +'includes/ajax/tipo_habitacion.php';
@@ -1065,7 +1079,7 @@ $('#btnsave').click(()=>{
         var datos = {
             "action": "registrar",
             "habitacion": $('#txthabitacion').val(),
-            "hotel_id": $('#txthotel_id').val(),
+            "hotel_id": parseInt($('#txthotel_id').val()),
             "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
             "vista": vist,
             "detalle": $('#txtdetalle').val(),
@@ -1073,6 +1087,7 @@ $('#btnsave').click(()=>{
             
         };
 
+      
         saveAjax(url,datos);
     }else{
             //--> datos a enviar al editar
@@ -1083,19 +1098,19 @@ $('#btnsave').click(()=>{
         var datos = {
             "idEditar":$('#idAux').val(),
             "habitacion": $('#txthabitacion').val(),
-            "hotel_id": $('#txthotel_id').val(),
+            "hotel_id": parseInt($('#txthotel_id').val()),
             "tipo_habitacion_id": $('#txttipo_habitacion_id').val(),
             "vista": vist,
             "detalle": $('#txtdetalle').val(),
             "vendible": v
         };
-        
+        console.log(datos);
         editAjax(url,datos);
     }
     
 })
 
-var id_hotel=$('#txthotel_id').val();
+ var id_hotel=$('#txthotel_id').val();
 var datos = {
     id_hotel: id_hotel,
 };
@@ -1124,4 +1139,129 @@ dataType:"text",
 }
 
 
+/* tabla empleados */
+
+var urlEmpleado=path+"includes/ajax/empleado.php?tablaE=empleado";
+$('#TablaEmpleado').DataTable( {
+    "ajax": urlEmpleado
+})
+    //--> bnt que se encarga de agregar o actualizar empleado.
+$('#btnsaveEmpleado').click(()=>{
+    var action = $('#btnsaveEmpleado').attr('action');
+    var urlEmpleadoo= path +'includes/ajax/empleado.php';
+
+    if(action === "saveEmpleado"){
+        //--> datos a enviar al guardar
+            var acceso=$('input:radio[name=txtacceso_aihms]:checked').val();
+            var manejo=$('input:radio[name=txtmaneja_ota]:checked').val();
+           
+        var datos = {
+            "action": "registrarEmpleado",       
+            "hotel_id": parseInt($('#txthotel_id_empleado').val()),
+            "empleado": $('#txtempleado').val(),
+            "correo": $('#txtcorreo2').val(),
+            "telefono": $('#txttelefono2').val(),
+            "celular": $('#txtcelular2').val(),
+            "acceso_aihms": acceso,
+            "maneja_ota": manejo,
+            "actividad_id": $('#txtpuesto_id').val(),
+            "puesto_id": $('#txtactividad_id').val(),
+            
+        };
+        console.log(datos);
+      
+        saveAjaxEmple(urlEmpleadoo,datos);
+    }else{
+             //--> datos a enviar al editar
+             var acceso=$('input:radio[name=txtacceso_aihms]:checked').val();
+            var manejo=$('input:radio[name=txtmaneja_ota]:checked').val();
+            
+        var datos = {
+            "idEditarEm":$('#idAuxx').val(),       
+            "hotel_id": parseInt($('#txthotel_id_empleado').val()),
+            "empleado": $('#txtempleado').val(),
+            "correo": $('#txtcorreo').val(),
+            "telefono": $('#txttelefono').val(),
+            "celular": $('#txtcelular').val(),
+            "acceso_aihms": acceso,
+            "maneja_ota": manejo,
+            "actividad_id": $('#txtpuesto_id').val(),
+            "puesto_id": $('#txtactividad_id').val(),
+            
+        };
+        
+        console.log(datos);
+        editAjaxEmple(urlEmpleadoo,datos);
+    }
+    
+})
+ 
+/*******tabla otas*******/
+var urlOta=path+"includes/ajax/ota.php?tablaOta=hotel_has_ota";
+
+$("#TablaaOta").DataTable({
+    "ajax": urlOta
+})
+
+
+$('#btnsaveOta').click(()=>{
+    var action = $('#btnsaveOta').attr('action');
+    var urlOta= path +'includes/ajax/ota.php';
+
+    if(action === "saveOta"){
+        //--> datos a enviar al guardar
+            var adeudo=$('input:radio[name=txttiene_adeudo]:checked').val();
+           
+
+
+            var d = ($.datepicker.formatDate('yyyy mm dd',new Date($('#txtmfecha_ultimo_pago').val())));
+           alert(d);
+        var datos = {
+            "action": "registrarOta",       
+            "hotel_id": parseInt($('#txthotel_id_ota').val()),
+            "ota_nombre_id": $('#txtota_id').val(),
+            "status_ota_id": $('#txtstatus_ota_id').val(),
+            "link_publicacion": $('#txtlink_publicacion').val(),
+            "comentarios": $('#txtcomentarios').val(),
+            "usuario": $('#txtusuario').val(),
+            "clave": $('#txtclave').val(),
+            "mail_asociado":  $('#txtmail_asociado').val(),
+            "fecha_ultimo_pago": d,
+            "tiene_adudo": adeudo,
+            "monto_adeudo": $('#txtmonto_adeudo').val(),
+            "comision": $('#txtdetalle_comisiones').val(),
+             
+        };
+        console.log(datos);
+      
+        saveAjaxOta(urlOta,datos);
+    }else{
+             //--> datos a enviar al editar
+             var adeudo=$('input:radio[name=txttiene_adeudo]:checked').val();
+           
+            
+        var datos = {
+            "idEditarOta":$('#idAuxr').val(),       
+            "hotel_id": parseInt($('#txthotel_id_ota').val()),
+            "ota_nombre_id": $('#txtota_id').val(),
+            "status_ota_id": $('#txtstatus_ota_id').val(),
+            "link_publicacion": $('#txtlink_publicacion').val(),
+            "comentarios": $('#txtcomentarios').val(),
+            "usuario": $('#txtusuario').val(),
+            "clave": $('#txtclave').val(),
+            "mail_asociado":  $('#txtmail_asociado').val(),
+            "fecha_ultimo_pago": $('#txtmfecha_ultimo_pago').val(),
+            "tiene_adudo": adeudo,
+            "monto_adeudo": $('#txtmonto_adeudo').val(),
+            "comision": $('#txtdetalle_comisiones').val(),
+            
+        };
+        
+        console.log(datos);
+        editAjaxOta(urlOta,datos);
+    }
+    
+})
+ 
 </script>
+
