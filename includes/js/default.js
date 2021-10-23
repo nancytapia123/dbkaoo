@@ -373,7 +373,7 @@ function BtnEditarOta(id) {
       });
   
       $('#title_modal').html(titulo_modal);
-      $('#btnsaveOta').attr("action","EditarEmpleado");
+      $('#btnsaveOta').attr("action","EditarOta");
       $('#btnsaveOta').html("Editar");
       $("#AgregarOta").modal();
      
@@ -430,7 +430,7 @@ function BtnEliminarOta(id){
   $.ajax({
       url: url,
       type: "POST",
-      data: {"action":"deleteOta",idEliOta:id,"tableOta":tableOta},
+      data: {"action":"deleteOta",idEliO:id,"tableOta":tableOta},
       async: false,
       dataType: "text",
       success: function (respuesta){

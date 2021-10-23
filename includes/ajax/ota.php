@@ -44,26 +44,31 @@ function viewTableOta($url,$sql,$table,$title,$db){
     echo $dataJson; 
 }
 
-if(isset($tablaOta)){
+if(isset($tablaOtta)){
     $url = "$pathSitioCMS/includes/ajax/ota.php";
     $sql="SELECT o.id,ot.ota,p.status_ota,ho.hotel,o.link_publicacion,o.mail_asociado,o.fecha_ultimo_pago,o.monto_adeudo,o.comision
     FROM hotel_has_ota AS o
     INNER JOIN hotel  AS ho ON o.hotel_id=ho.id
     INNER JOIN status_ota  AS p ON o.status_ota_id=p.id
     INNER JOIN ota  AS ot ON o.ota_nombre_id=ot.id";
+    
     $titulo = "tabla ota";
 
-    viewTableOta($url,$sql,$tablaOta,$titulo,$db);
+    viewTableOta($url,$sql,$tablaOtta,$titulo,$db);
 
 } 
 
 
 //--> Inserta un nuevo registro
 if(isset($action) && $action=="registrarOta"){
+   $fecha= date("Y-m-d", strtotime($fecha_ultimo_pago) );
+   if($monto_adeudo=='' && $comision==''){
+     $monto_adeudo=0;
+     $comision=0;
+   }
     $sql="INSERT INTO hotel_has_ota( hotel_id, status_ota_id, link_publicacion, comentarios, usuario, clave, mail_asociado, fecha_ultimo_pago, tiene_adeudo, monto_adeudo, comision, ota_nombre_id)
-     VALUES ('$hotel_id','$status_ota_id','$link_publicacion','$comentarios','$usuario','$clave','$mail_asociado','$fecha_ultimo_pago','$tiene_adudo','$monto_adeudo','$comision','$ota_nombre_id')";
-     echo $sql;
-     exit();
+     VALUES ('$hotel_id','$status_ota_id','$link_publicacion','$comentarios','$usuario','$clave','$mail_asociado','$fecha','$tiene_adudo','$monto_adeudo','$comision','$ota_nombre_id')";
+     
     $cursoss = $db->prepare($sql);
   
     if($cursoss->execute()){
@@ -91,12 +96,12 @@ if(isset($action) && $action=="EditarOta"){
 //--> Actualiza el registro
 if(isset($idEditarOta)){
 
-   
+    $fecha= date("Y-m-d", strtotime($fecha_ultimo_pago));
    $sql="UPDATE hotel_has_ota SET hotel_id = '$hotel_id', status_ota_id = '$status_ota_id', link_publicacion = '$link_publicacion', 
-    comentarios = '$comentarios', usuario = '$usuario',clave = '$clave', mail_asociado = '$mail_asociado', fecha_ultimo_pago = '$fecha_ultimo_pago', 
+    comentarios = '$comentarios', usuario = '$usuario',clave = '$clave', mail_asociado = '$mail_asociado', fecha_ultimo_pago = '$fecha', 
     tiene_adeudo = '$tiene_adudo', monto_adeudo = '$monto_adeudo', comision = '$comision', ota_nombre_id = '$ota_nombre_id'
      WHERE hotel_has_ota.id = $idEditarOta"; 
-   
+
      $cursos = $db->prepare($sql);
      $cursos->execute();
      if($cursos->execute()){
@@ -104,11 +109,11 @@ if(isset($idEditarOta)){
      }else{
          echo false;
      }
- }
+}
  
- //-> Elimina un curso
+ //-> Elimina un ota
  if(isset($action) && $action=="deleteOta"){
-     $sql="DELETE FROM $tableOta WHERE id = $idEliOta";
+     $sql="DELETE FROM $tableOta WHERE id = $idEliO";
  
      $cursos = $db->prepare($sql);
      if( $cursos->execute()){

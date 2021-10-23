@@ -755,7 +755,7 @@
                                                                     
                                                             <div class="text-right mt">
                                     
-                                                                <button class="btn btn-labeled btn-default" onclick="btnAddModalOta('frm_Ota','Guardar','Agregar nueva Ota')" type="button">
+                                                                <button class="btn btn-labeled btn-default"  onclick="btnAddModalOta('frm_Ota','Guardar','Agregar nueva Ota')" type="button">
                                                                     <span class="btn-label">
                                                                         <i class="glyph-icon icon-plus"></i>
                                                                     </span> Agregar
@@ -814,13 +814,16 @@
                                                                         </div>                                                                                                                                                                                                                                                    
                                                                         <!-- ota -->
                                                                         <div class="col-md-6 mrg20T">
-                                                                            <label for="">OTA</label>                       
-                                                                            <select class="form-control" id="txtota_id">
-                                                                                <option value="0">Seleccionar una OTA</option>     
+                                                                            <label for="">OTA</label>     
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
+                                                                                <select class="form-control" id="ota_nombre_id">
+                                                                                <option value="0">Seleccionar un estatus</option>
                                                                                 {% for k,val in ota %}
                                                                                 <option value="{{val.id}}">{{val.ota}}</option>
-                                                                                {% endfor %}                                                                          
-                                                                             </select>
+                                                                                {% endfor %} 
+                                                                            </select>
+                                                                            </div>                              
                                                                         </div>
                                                                         <!-- status ota -->
                                                                         <div class="col-md-6 mrg20T">
@@ -882,7 +885,7 @@
                                                                                 <span class="add-on input-group-addon">
                                                                                     <i class="glyph-icon icon-calendar"></i>
                                                                                 </span>
-                                                                                <input type="text" class="bootstrap-datepicker form-control" value="02-16-12" data-date-format="mm/dd/yy" id="txtmfecha_ultimo_pago" name="txtmfecha_ultimo_pago">
+                                                                                <input type="text" class="bootstrap-datepicker form-control" value="02-16-12" data-date-format="mm/dd/yy" id="txtfecha_ultimo_pago" name="txtmfecha_ultimo_pago">
                                                                             </div>
                                                                         </div>
                                                                         <!-- tiene adeudo -->
@@ -907,13 +910,13 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div id="adeudo ocultar">
+                                                                        <div id="adeudo_ocultar" >
                                                                             <!-- monto adeudo -->                                                                   
                                                                             <div class="col-md-6 mrg20T">
                                                                                 <label for="">Monto adeudo</label>
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                    <input type="text" class="form-control" id="txtmonto_adeudo" name="txtmonto_adeudo">
+                                                                                    <input type="number" class="form-control" id="txtmonto_adeudo" name="txtmonto_adeudo">
                                                                                 </div>
                                                                             </div>
                                                                             <!-- comision -->
@@ -921,7 +924,7 @@
                                                                                 <label for="">Comisión</label>
                                                                                 <div class="input-group">
                                                                                     <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>                          
-                                                                                    <input type="text" class="form-control" id="txtdetalle_comisiones" name="txtdetalle_comisiones">
+                                                                                    <input type="number" class="form-control" id="txtcomision" name="txtdetalle_comisiones">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -1196,14 +1199,14 @@ $('#btnsaveEmpleado').click(()=>{
     
 })
  
-/*******tabla otas*******/
-var urlOta=path+"includes/ajax/ota.php?tablaOta=hotel_has_ota";
 
-$("#TablaaOta").DataTable({
-    "ajax": urlOta
+   
+			
+var urlOtaa=path+"includes/ajax/ota.php?tablaOtta=hotel_has_ota";
+
+$('#TablaaOta').DataTable( {
+    "ajax": urlOtaa
 })
-
-
 $('#btnsaveOta').click(()=>{
     var action = $('#btnsaveOta').attr('action');
     var urlOta= path +'includes/ajax/ota.php';
@@ -1212,24 +1215,20 @@ $('#btnsaveOta').click(()=>{
         //--> datos a enviar al guardar
             var adeudo=$('input:radio[name=txttiene_adeudo]:checked').val();
            
-
-
-            var d = ($.datepicker.formatDate('yyyy mm dd',new Date($('#txtmfecha_ultimo_pago').val())));
-           alert(d);
         var datos = {
             "action": "registrarOta",       
             "hotel_id": parseInt($('#txthotel_id_ota').val()),
-            "ota_nombre_id": $('#txtota_id').val(),
+            "ota_nombre_id": $('#ota_nombre_id').val(),
             "status_ota_id": $('#txtstatus_ota_id').val(),
             "link_publicacion": $('#txtlink_publicacion').val(),
             "comentarios": $('#txtcomentarios').val(),
             "usuario": $('#txtusuario').val(),
             "clave": $('#txtclave').val(),
             "mail_asociado":  $('#txtmail_asociado').val(),
-            "fecha_ultimo_pago": d,
+            "fecha_ultimo_pago":$('#txtfecha_ultimo_pago').val(),
             "tiene_adudo": adeudo,
             "monto_adeudo": $('#txtmonto_adeudo').val(),
-            "comision": $('#txtdetalle_comisiones').val(),
+            "comision": $('#txtcomision').val(),
              
         };
         console.log(datos);
@@ -1243,17 +1242,17 @@ $('#btnsaveOta').click(()=>{
         var datos = {
             "idEditarOta":$('#idAuxr').val(),       
             "hotel_id": parseInt($('#txthotel_id_ota').val()),
-            "ota_nombre_id": $('#txtota_id').val(),
+            "ota_nombre_id": $('#ota_nombre_id').val(),
             "status_ota_id": $('#txtstatus_ota_id').val(),
             "link_publicacion": $('#txtlink_publicacion').val(),
             "comentarios": $('#txtcomentarios').val(),
             "usuario": $('#txtusuario').val(),
             "clave": $('#txtclave').val(),
             "mail_asociado":  $('#txtmail_asociado').val(),
-            "fecha_ultimo_pago": $('#txtmfecha_ultimo_pago').val(),
+            "fecha_ultimo_pago": $('#txtfecha_ultimo_pago').val(),
             "tiene_adudo": adeudo,
             "monto_adeudo": $('#txtmonto_adeudo').val(),
-            "comision": $('#txtdetalle_comisiones').val(),
+            "comision": $('#txtcomision').val(),
             
         };
         
