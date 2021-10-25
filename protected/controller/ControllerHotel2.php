@@ -8,6 +8,7 @@ class ControllerHotel2 extends Controller
     }
     public function main()
     {
+        
 
         $sql="SELECT * FROM hotel";
         $this->data["hoteles"]=indexModel::bd($this->conf)->getSQL($sql);
@@ -16,6 +17,8 @@ class ControllerHotel2 extends Controller
         $this->data["puesto"]=indexModel::bd($this->conf)->getSQL("SELECT * FROM puesto");
         $this->data["ota"]=indexModel::bd($this->conf)->getSQL("SELECT * FROM ota");
         $this->data["status_ota"]=indexModel::bd($this->conf)->getSQL("SELECT * FROM status_ota");
+        $this->data["modelo"]=indexModel::bd($this->conf)->getSQL("SELECT * FROM modelo");
+        $this->data["tipo_contrato"]=indexModel::bd($this->conf)->getSQL("SELECT * FROM tipo_contrato");
         $sql="SELECT id, hotel FROM hotel WHERE id=".$_COOKIE["idHotel"];
         $this->data["hotel"]=indexModel::bd($this->conf)->getSQL($sql)[0];
       

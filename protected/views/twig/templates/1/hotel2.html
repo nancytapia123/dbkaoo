@@ -308,8 +308,9 @@
                                                         Contrato
                                                     </h3>
                                                     <div class="content-box-wrapper">
-                                                        <form id="frm_contrato">
-                                                            <input type="hidden"  name="idAux2" id="idAux2">
+                                                        <form id="frm_contrato" action="{{pathSite}}hotel2">
+                                                            <input type="hidden"  name="idAuxContrato" id="idAuxContrato">
+                                                            <input type="hidden"  name="idUsuario" id="idUsuario" value="{{idUser}}">
                                                                 <!-- contrato -->
                                                             <div class="panel ">
                                                                 <div class="panel-body">
@@ -322,24 +323,47 @@
                                                                         <label for="">BD </label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="glyph-icon icon-user"></i></span>                          
-                                                                            <input type="text" class="form-control" id="txtombre" name="txthotel">
-                            
+                                                                            <input type="text" class="form-control" value="{{Nombre}}" readonly>
                                                                         </div>
-                                                                    </div>     
+                                                                    </div>    
+                                                                    <!-- Termino de contrato -->  
+                                                                    <div class="col-md-12 mrg20T">
+                                                                        <label for="">Hotel </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-circle"></i></span>  
+                                                                            <input type="text" value="{{hotel.hotel}}" class="form-control">                          
+                                                                            <input type="hidden" class="form-control" name="txthotel_id_contrato" id="txthotel_id_contrato" value="{{hotel.id}}">
+
+                                                                        </div>
+                                                                    </div>
                                                                         <!-- Termino de contrato -->                                  
                                                                     <div class="col-md-6 mrg20T">
                                                                         <label for="">Termino de contrato </label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="glyph-icon icon-file-text"></i></span>                          
-                                                                            <input type="text" class="form-control" id="txttermino_contrato" name="txtcuih">
+                                                                            <input type="text" class="form-control" id="txttermino_contrato" name="txttermino_contrato" required>
                                                                         </div>
                                                                     </div>
+                                                                     <!-- tipo contrato-->
+                                                                     <div class="col-md-6 mrg20T">
+                                                                        <label for="">Tipo contrato </label>
+                                                                        <div class="input-group">
+                                                                            <span class="input-group-addon"><i class="glyph-icon icon-file"></i></span>                          
+                                                                            <select class="form-control" id="txttipo_contrato_id" name="txttipo_contrato_id" required>
+                                                                            <option value="0">Seleccionar tipo contrato</option>
+                                                                            {%for k, val in tipo_contrato %}
+                                                                            <option value="{{val.id}}">{{val.tipo_contrato}}</option>
+                                                                            {% endfor%}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>                                                                   
+
                                                                         <!-- Tiempo de penalización-->
                                                                     <div class="col-md-6 mrg20T">
                                                                         <label for="">Tiempo de penalización </label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="glyph-icon icon-gavel"></i></span>                          
-                                                                            <input type="text" id="txtpenalizacion" class="form-control">
+                                                                            <input type="text" id="txtpenalizacion" name="txtpenalizacion" class="form-control" required>
                                                                         </div>
                                                                     </div>
                                                                     <!-- modelo-->
@@ -347,35 +371,29 @@
                                                                         <label for="">Modelo </label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="glyph-icon icon-file"></i></span>                          
-                                                                            <select class="form-control" id="txttipo_contrato_id">
+                                                                            <select class="form-control" id="txtmodelo_id" name="txtmodelo_id" required >
                                                                             <option value="0">Seleccionar de Modelo</option>
+                                                                            {%for k, val in modelo %}
+                                                                            <option value="{{val.id}}">{{val.modelo}}</option>
+                                                                            {% endfor%}
                                                                             </select>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- tipo contrato-->
-                                                                    <div class="col-md-6 mrg20T">
-                                                                        <label for="">Tipo contrato </label>
-                                                                        <div class="input-group">
-                                                                            <span class="input-group-addon"><i class="glyph-icon icon-file"></i></span>                          
-                                                                            <select class="form-control" id="txttipo_contrato_id">
-                                                                            <option value="0">Seleccionar tipo contrato</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>  
+                                                                   
                                                                     <!-- costo fijo-->
                                                                     <div class="col-md-6 mrg20T">
                                                                         <label for="">Costo fijo </label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
-                                                                            <input type="text" id="txtcosto_fijo" class="form-control">
+                                                                            <input type="number" id="txtcosto_fijo" id="txtcosto_fijo" class="form-control" required>
                                                                         </div>
                                                                     </div>
                                                                     <!--distribucion-->
                                                                     <div class="col-md-6 mrg20T">
-                                                                        <label for="">Distribución fee </label>
+                                                                        <label for="">Distribución free </label>
                                                                         <div class="input-group">
                                                                             <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
-                                                                            <input type="text" id="txtcosto_fijo" class="form-control">
+                                                                            <input type="text" id="txtdistribucion" name="txtdistribucion" class="form-control" required>
                                                                         </div>
                                                                     </div>
                                                                     <!--FlatTakeRate-->
@@ -383,27 +401,33 @@
                                                                             <label for="">FlatTakeRate </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
-                                                                                <input type="text" id="txtflat_take_rate" class="form-control">
+                                                                                <input type="text" id="txtflat_take_rate" name="txtflat_take_rate" class="form-control" required>
                                                                             </div>
                                                                     </div>
                                                                     <!--fecha firma-->
                                                                     <div class="col-md-6 mrg20T">
                                                                             <label for="">Fecha firma </label>
-                                                                            <div class="input-group">
-                                                                                <span class="input-group-addon"><i class="glyph-icon icon-building"></i></span>                          
-                                                                                <input type="date" id="txtfecha_firma" class="form-control">
+                                                                            <div class="input-prepend input-group">
+                                                                                <span class="add-on input-group-addon">
+                                                                                    <i class="glyph-icon icon-calendar"></i>
+                                                                                </span>
+                                                                                <input type="text" class="bootstrap-datepicker form-control" value="02-16-12" data-date-format="mm/dd/yy" id="txtfecha_firma" name="txtfecha_firma" required>
                                                                             </div>
+                                                                            
                                                                     </div>
                                                                     <!--link carpeta-->
                                                                     <div class="col-md-6 mrg20T">
                                                                             <label for="">Link de carpeta </label>
                                                                             <div class="input-group">
                                                                                 <span class="input-group-addon"><i class="glyph-icon icon-link"></i></span>                          
-                                                                                <input type="text" id="txtlink_carpeta" class="form-control">
+                                                                                <input type="text" id="txtlink_carpeta" name="txtlink_carpeta" class="form-control" required>
                                                                             </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="text-right"> 
+                                                             <button type="button" id="btnsaveContrato" name="btnsaveContrato" class="btn btn-success">Guardar</button>
+                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -1142,6 +1166,28 @@ dataType:"text",
 }
 
 
+/* contratos */
+
+
+
+function tiposContratos(sel) {
+      if (sel.value=="1"){
+           divC = document.getElementById("slab");
+           divC.style.display = "";
+
+           divT = document.getElementById("flat");
+           divT.style.display = "none";
+
+      }else{
+
+           divC = document.getElementById("slab");
+           divC.style.display="none";
+
+           divT = document.getElementById("flat");
+           divT.style.display = "";
+      }
+}
+
 /* tabla empleados */
 
 var urlEmpleado=path+"includes/ajax/empleado.php?tablaE=empleado";
@@ -1262,5 +1308,60 @@ $('#btnsaveOta').click(()=>{
     
 })
  
+
+var urlContrato=path+"includes/ajax/contrato.php";
+
+
+$('#btnsaveContrato').click(()=>{
+    var action = $('#btnsaveContrato').attr('action');
+    var urlContrato=path+"includes/ajax/contrato.php";
+   
+        var datos = {
+            "action": "registrarContrato",       
+            "hotel_id": parseInt($('#txthotel_id_contrato').val()),
+            "usuario_id": $('#idUsuario').val(),
+            "modelo_id": $('#txtmodelo_id').val(),
+            "termino_contrato": $('#txttermino_contrato').val(),
+            "penalizacion": $('#txtpenalizacion').val(),
+            "tipo_contrato_id": $('#txttipo_contrato_id').val(),
+            "costo_fijo": $('#txtcosto_fijo').val(),
+            "distribucion_free":  $('#txtdistribucion').val(),
+            "flat_take_rate":$('#txtflat_take_rate').val(),
+            "fecha_firma": $('#txtfecha_firma').val(),
+            "link_carpeta": $('#txtlink_carpeta').val(),
+           
+             
+        };
+        console.log(datos);
+                $.ajax({
+                url: urlContrato,
+                type: "POST",
+                data: datos,
+                async: false,
+                dataType: "text",
+                success: function (respuesta){
+                console.log("data: ", respuesta);
+                    if(respuesta){
+                
+                $.jGrowl("Registro guardado.", {
+                    sticky: false,
+                    position: 'top-right',
+                    theme: 'bg-blue-alt'
+                });
+               
+                document.getElementById("frm_contrato").reset();
+                }else{
+                $.jGrowl("Los datos no pueden ser vacios.", {
+                    sticky: false,
+                    position: 'top-right',
+                    theme: 'bg-red'
+                });
+                }
+
+            }
+        
+        
+        })
+})
 </script>
 
